@@ -1,0 +1,1 @@
+// IAM User Group Membership Output

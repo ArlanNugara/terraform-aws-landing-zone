@@ -1,0 +1,52 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+parameters:
+- name: pre_flight
+  displayName: Pre Flight Test
+  type: string
+  values:
+  - Yes
+  - No
+- name: stages
+  type: object
+  default:
+    - stage: core
+    - stage: management
+      dependsOn: Deploycore    
+    - stage: identity
+      dependsOn: Deploymanagement
+    - stage: connectivity
+      dependsOn: Deployidentity
+
+variables:
+  - name: AZURE_SERVICE_CONNECTION
+    value: '< Service Connection >'
+  - group: '< Variable Group >'
+
+stages:
+  - ${{ each stage in parameters.stages }} :
+    - stage: Deploy${{ stage.stage }}
+      displayName: Deploy ${{ stage.stage }}
+      dependsOn: ${{ stage.dependsOn }}
+      jobs:
+      - job: 
+        displayName: "Starting ${{ stage.stage }} Deployment"
+        
+        steps:
+        
+        - ${{ if eq(parameters.pre_flight, 'Yes')}}:
+          - template: templates/pre-flight.yml
+            parameters:
+              workingDir: '$(Build.Repository.LocalPath)'
+              level: '${{ stage.stage }}'
+              AZURE_SERVICE_CONNECTION: $(AZURE_SERVICE_CONNECTION)
+        
+        - ${{ if eq(parameters.pre_flight, 'No')}}:
+          - template: templates/deploy.yml
+            parameters:
+              workingDir: '$(Build.Repository.LocalPath)'
+              level: '${{ stage.stage }}'
+              AZURE_SERVICE_CONNECTION: $(AZURE_SERVICE_CONNECTION)
