@@ -11,11 +11,6 @@ variable "fw_delete_protection" {
   default     = false
 }
 
-variable "fw_policy_arn" {
-  type        = string
-  description = "Firewall Policy ARN"
-}
-
 variable "fw_policy_change_protection" {
   type        = bool
   description = "Firewall Policy Change Protection"
@@ -36,6 +31,11 @@ variable "fw_snet_change_protection" {
 variable "snet_id" {
   type        = string
   description = "Subnet ID"
+}
+
+variable "targets" {
+  type        = list(string)
+  description = "Firewall Targets"
 }
 
 variable "fw_tags" {

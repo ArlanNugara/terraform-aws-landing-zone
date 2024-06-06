@@ -261,4 +261,13 @@ locals {
       tags        = var.hub_vpn_conn_tags
     }
   }
+  firewall = {
+    "hub" = {
+      name    = var.fw_name,
+      vpc     = module.vpc["hub"].output_vpc_id
+      snet    = module.snet["firewall"].output_snet_id
+      targets = var.fw_targets
+      tags    = var.fw_tags
+    }
+  }
 }

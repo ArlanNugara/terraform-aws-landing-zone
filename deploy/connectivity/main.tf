@@ -119,3 +119,13 @@ module "conn" {
   cloud_cidr    = each.value.cloud_cidr
   vpn_conn_tags = each.value.tags
 }
+
+module "firewall" {
+  source   = "../../modules/network/security/firewall"
+  for_each = local.firewall
+  fw_name  = each.value.name
+  fw_tags  = each.value.tags
+  vpc_id   = each.vaule.vpc
+  snet_id  = each.value.snet
+  targets  = each.value.targets
+}

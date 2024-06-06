@@ -233,3 +233,16 @@ hub_vpn_conn_tags = {
   "CreatedBy"        = "Terraform"
 }
 hub_vpn_conn_remote_cidr = "172.16.0.0/24"
+
+## Firewall
+
+fw_name    = "alv_hub_fw"
+fw_targets = ["www.example.com"]
+fw_tags = {
+  "Name"             = "alv_hub_fw",
+  "Environment"      = "Sandbox",
+  "ApplicationOwner" = "Arlan Nugara",
+  "BusinessUnit"     = "IT",
+  "Application"      = "Network Firewall",
+  "CreatedBy"        = "Terraform"
+}

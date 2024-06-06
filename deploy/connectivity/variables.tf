@@ -207,3 +207,20 @@ variable "hub_vpn_conn_remote_cidr" {
   type        = string
   description = "Remote IPv4 address range"
 }
+
+// Firewall
+
+variable "fw_name" {
+  type        = string
+  description = "Firewall Name"
+}
+
+variable "fw_targets" {
+  type        = list(string)
+  description = "Firewall Targets"
+}
+
+variable "fw_tags" {
+  type        = map(string)
+  description = "Firewall Tags"
+}
