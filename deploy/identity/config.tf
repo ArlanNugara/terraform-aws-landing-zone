@@ -1,6 +1,7 @@
 data "aws_organizations_organization" "root_org" {}
 
 locals {
+  # Roles
   roles = {
     "ec2_assume_role" = {
       name        = var.ec2_assume_role_name
@@ -18,7 +19,6 @@ locals {
           }
         ]
       })
-      tags = var.ec2_assume_role_tags
     }
     "s3_assume_role" = {
       name        = var.s3_assume_role_name
@@ -36,9 +36,9 @@ locals {
           }
         ]
       })
-      tags = var.s3_assume_role_tags
     }
   }
+  # Policy
   policy = {
     "ec2_ro" = {
       name        = var.ec2_ro_policy_name
@@ -55,7 +55,6 @@ locals {
           }
         ]
       })
-      tags = var.ec2_ro_policy_tags
     }
     "ec2_rw" = {
       name        = var.ec2_rw_policy_name
@@ -72,7 +71,6 @@ locals {
           }
         ]
       })
-      tags = var.ec2_rw_policy_tags
     }
     "s3_ro" = {
       name        = var.s3_ro_policy_name
@@ -89,7 +87,6 @@ locals {
           }
         ]
       })
-      tags = var.s3_ro_policy_tags
     }
     "s3_rw" = {
       name        = var.s3_rw_policy_name
@@ -106,7 +103,6 @@ locals {
           }
         ]
       })
-      tags = var.s3_rw_policy_tags
     }
   }
   attachment = {
@@ -129,6 +125,12 @@ locals {
       name   = var.s3_rw_policy_name
       role   = [module.iam_roles["s3_assume_role"].output_iam_role_name]
       policy = module.iam_policy["s3_rw"].output_iam_policy_arn
+    }
+  }
+  instance_profile = {
+    "profile_1" = {
+      name = var.instance_profile_name
+      role = module.iam_roles["ec2_assume_role"].output_iam_role_name
     }
   }
 }

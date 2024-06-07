@@ -1,5 +1,12 @@
 // Variables
 
+variable "default_tags" {
+  type        = map(string)
+  description = "Default Tags"
+}
+
+# Roles
+
 variable "ec2_assume_role_name" {
   type        = string
   description = "EC2 Assume Role Name"
@@ -8,11 +15,6 @@ variable "ec2_assume_role_name" {
 variable "ec2_assume_role_description" {
   type        = string
   description = "EC2 Assume Role Description"
-}
-
-variable "ec2_assume_role_tags" {
-  type        = map(string)
-  description = "EC2 Assume Role Tags"
 }
 
 variable "s3_assume_role_name" {
@@ -25,10 +27,7 @@ variable "s3_assume_role_description" {
   description = "S3 Assume Role Description"
 }
 
-variable "s3_assume_role_tags" {
-  type        = map(string)
-  description = "S3 Assume Role Tags"
-}
+# Policy
 
 variable "ec2_ro_policy_name" {
   type        = string
@@ -38,11 +37,6 @@ variable "ec2_ro_policy_name" {
 variable "ec2_ro_policy_description" {
   type        = string
   description = "EC2 Read Only Policy Description"
-}
-
-variable "ec2_ro_policy_tags" {
-  type        = map(string)
-  description = "EC2 Read Only Policy Tags"
 }
 
 variable "ec2_rw_policy_name" {
@@ -55,11 +49,6 @@ variable "ec2_rw_policy_description" {
   description = "EC2 Admin Policy Description"
 }
 
-variable "ec2_rw_policy_tags" {
-  type        = map(string)
-  description = "EC2 Admin Policy Tags"
-}
-
 variable "s3_ro_policy_name" {
   type        = string
   description = "S3 Read Only Policy Name"
@@ -68,11 +57,6 @@ variable "s3_ro_policy_name" {
 variable "s3_ro_policy_description" {
   type        = string
   description = "S3 Read Only Policy Description"
-}
-
-variable "s3_ro_policy_tags" {
-  type        = map(string)
-  description = "S3 Read Only Policy Tags"
 }
 
 variable "s3_rw_policy_name" {
@@ -85,7 +69,9 @@ variable "s3_rw_policy_description" {
   description = "S3 Admin Policy Description"
 }
 
-variable "s3_rw_policy_tags" {
-  type        = map(string)
-  description = "S3 Admin Policy Tags"
+# Instance Profile
+
+variable "instance_profile_name" {
+  type        = string
+  description = "Instance Profile name"
 }
