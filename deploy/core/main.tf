@@ -5,7 +5,7 @@ module "ou-l1" {
   for_each     = local.ou-l1
   ou_name      = each.value.name
   ou_parent_id = each.value.parent
-  ou_tags      = each.value.tags
+  default_tags = var.default_tags
 }
 
 module "ou-l2" {
@@ -13,7 +13,7 @@ module "ou-l2" {
   for_each     = local.ou-l2
   ou_name      = each.value.name
   ou_parent_id = each.value.parent
-  ou_tags      = each.value.tags
+  default_tags = var.default_tags
   depends_on = [
     module.ou-l1
   ]
@@ -24,7 +24,7 @@ module "ou-l3" {
   for_each     = local.ou-l3
   ou_name      = each.value.name
   ou_parent_id = each.value.parent
-  ou_tags      = each.value.tags
+  default_tags = var.default_tags
   depends_on = [
     module.ou-l2
   ]
@@ -36,5 +36,5 @@ module "acc-l3" {
   ac_name      = each.value.name
   ac_email     = each.value.email
   ac_parent_id = each.value.ou
-  ac_tags      = each.value.tags
+  default_tags = var.default_tags
 }
