@@ -1,5 +1,12 @@
 // Variables
 
+variable "default_tags" {
+  type        = map(string)
+  description = "Default Tags"
+}
+
+# Security Hub
+
 variable "sh_master_account_id" {
   type        = string
   description = "Security Hub Master Account ID"

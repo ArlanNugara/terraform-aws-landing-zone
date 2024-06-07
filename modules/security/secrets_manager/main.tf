@@ -2,8 +2,13 @@
 
 resource "aws_secretsmanager_secret" "secret" {
   name                    = var.secret_name
-  tags                    = var.secret_tags
   recovery_window_in_days = var.secret_retention
+  tags = merge(
+    {
+      Name = var.secret_name
+    },
+    var.default_tags
+  )
 }
 
 resource "aws_secretsmanager_secret_version" "value" {

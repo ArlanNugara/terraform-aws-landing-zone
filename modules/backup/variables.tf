@@ -5,11 +5,6 @@ variable "bkp_vault_name" {
   description = "Backup Vault Name"
 }
 
-variable "listener_name" {
-  type        = string
-  description = "LB Listner Name"
-}
-
 variable "bkp_report_bucket" {
   type        = string
   description = "Bucket Name for Reports"

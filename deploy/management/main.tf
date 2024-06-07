@@ -33,10 +33,9 @@ module "secutity_hub_finding_aggregator" {
 module "bucket" {
   source        = "../../modules/storage/s3"
   for_each      = local.s3
+  bucket_name   = each.value.name
   bucket_prefix = each.value.prefix
-  bucket_tags = {
-    "Name" = each.value.name
-  }
+  default_tags  = var.default_tags
 }
 
 module "bucket_object" {
@@ -52,9 +51,7 @@ module "config_iam_role" {
   role_name        = local.role_policy.role_name
   role_description = local.role_policy.role_description
   role_policy      = local.role_policy.role_policy
-  role_tags = {
-    Name = local.role_policy.role_name
-  }
+  default_tags     = var.default_tags
 }
 
 module "config_iam_policy" {
@@ -105,9 +102,7 @@ module "org_aggregator" {
   source          = "../../modules/security/config/aggregator/organization"
   aggregator_name = local.config.org_aggregator_name
   role_arn        = module.config_iam_role.output_iam_role_arn
-  aggregator_tags = {
-    Name = local.config.org_aggregator_name
-  }
+  default_tags    = var.default_tags
   depends_on = [
     aws_iam_role_policy_attachment.attach
   ]
@@ -134,9 +129,7 @@ module "required_tag_policy" {
   policy_type        = each.value.type
   target_id          = each.value.target
   policy_content     = each.value.policy
-  policy_tags = {
-    Name = each.value.name
-  }
+  default_tags       = var.default_tags
 }
 
 // Backup
@@ -145,7 +138,5 @@ module "backup" {
   source            = "../../modules/backup"
   bkp_vault_name    = var.backup_vault_name
   bkp_report_bucket = module.bucket["backup"].output_bucket_name
-  bkp_vault_tags = {
-    Name = var.backup_vault_name
-  }
+  default_tags      = var.default_tags
 }

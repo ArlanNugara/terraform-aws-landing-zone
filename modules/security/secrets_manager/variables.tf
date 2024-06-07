@@ -11,12 +11,6 @@ variable "secret_retention" {
   default     = 15
 }
 
-# variable "secret_replica_region" {
-#   type        = string
-#   description = "Secret Manager Secret Replica Region"
-#   default     = null
-# }
-
 variable "secret_value" {
   type        = string
   description = "Secret Manager Secret Value"
