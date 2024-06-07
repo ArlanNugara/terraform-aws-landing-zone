@@ -1,5 +1,10 @@
 // VPC Variables
 
+variable "vpc_name" {
+  type        = string
+  description = "VPC Name"
+}
+
 variable "vpc_address" {
   type        = string
   description = "VPC Address Space"
@@ -29,7 +34,7 @@ variable "vpc_usage_metrics" {
   default     = true
 }
 
-variable "vpc_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "VPC Tags"
+  description = "Default Tags"
 }

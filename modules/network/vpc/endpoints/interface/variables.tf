@@ -1,5 +1,10 @@
 // VPC Endpoint Interface Type Variables
 
+variable "endpoint_name" {
+  type        = string
+  description = "VPC Endpoint Name"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
@@ -26,7 +31,7 @@ variable "vpc_endpoint_interface_dns" {
   default     = true
 }
 
-variable "vpc_endpoint_interface_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "VPC Endpoint Interface Type Tags"
+  description = "Default Tags"
 }

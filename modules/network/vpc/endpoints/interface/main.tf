@@ -8,5 +8,10 @@ resource "aws_vpc_endpoint" "vpc_endpoint_interface" {
   security_group_ids  = var.sg_id
   ip_address_type     = "ipv4"
   private_dns_enabled = var.vpc_endpoint_interface_dns
-  tags                = var.vpc_endpoint_interface_tags
+  tags = merge(
+    {
+      Name = var.endpoint_name
+    },
+    var.default_tags
+  )
 }

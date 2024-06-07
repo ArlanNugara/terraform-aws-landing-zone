@@ -11,7 +11,7 @@ variable "user_path" {
   default     = "/"
 }
 
-variable "user_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "User Tags"
+  description = "Default Tags"
 }

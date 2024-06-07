@@ -1,5 +1,10 @@
 // VPC Subnet Variables
 
+variable "snet_name" {
+  type        = string
+  description = "SNET Name"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
@@ -22,7 +27,7 @@ variable "snet_az" {
   default     = "us-east-1a"
 }
 
-variable "snet_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Subnet Tags"
+  description = "Default Tags"
 }

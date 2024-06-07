@@ -16,7 +16,7 @@ variable "config_rule_source_identifier" {
   description = "Config Rule Source Identifier"
 }
 
-variable "config_rule_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Config Rule Tags"
+  description = "Default Tags"
 }

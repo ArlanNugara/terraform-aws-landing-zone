@@ -2,7 +2,12 @@
 
 resource "aws_backup_vault" "bkp_vault" {
   name = var.bkp_vault_name
-  tags = var.bkp_vault_tags
+  tags = merge(
+    {
+      Name = var.bkp_vault_name
+    },
+    var.default_tags
+  )
 }
 
 resource "aws_backup_global_settings" "bkp_vault_global_settings" {

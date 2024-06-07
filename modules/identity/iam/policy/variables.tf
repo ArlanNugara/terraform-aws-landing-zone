@@ -21,7 +21,7 @@ variable "policy" {
   description = "IAM Policy Statement"
 }
 
-variable "policy_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "IAM Policy Tags"
+  description = "Default Tags"
 }

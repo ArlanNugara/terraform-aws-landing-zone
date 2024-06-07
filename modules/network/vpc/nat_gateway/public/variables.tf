@@ -1,5 +1,10 @@
 // Public NAT Gateway Variables
 
+variable "natgw_name" {
+  type        = string
+  description = "NAT Gateway Name"
+}
+
 variable "eip_id" {
   type        = string
   description = "Elastic IP ID"
@@ -10,7 +15,7 @@ variable "snet_id" {
   description = "Subnet ID"
 }
 
-variable "public_natgw_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Public NAT Gateway Tags"
+  description = "Default Tags"
 }

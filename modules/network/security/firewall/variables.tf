@@ -38,7 +38,7 @@ variable "targets" {
   description = "Firewall Targets"
 }
 
-variable "fw_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Firewall Tags"
+  description = "Default Tags"
 }

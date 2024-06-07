@@ -1,5 +1,10 @@
 // Network Access Control List Variables
 
+variable "nacl_name" {
+  type        = string
+  description = "NACL Name"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
@@ -10,7 +15,7 @@ variable "nacl_subnet_ids" {
   description = "Subnet IDs"
 }
 
-variable "nacl_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Network ACL Tags"
+  description = "Default Tags"
 }

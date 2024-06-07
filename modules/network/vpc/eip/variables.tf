@@ -1,6 +1,11 @@
 // Elastic IP Address
 
-variable "eip_tags" {
+variable "eip_name" {
+  type        = string
+  description = "EIP Name"
+}
+
+variable "default_tags" {
   type        = map(string)
-  description = "Elastic IP Address Tags"
+  description = "Default Tags"
 }

@@ -15,7 +15,7 @@ variable "role_policy" {
   description = "IAM Role Statement"
 }
 
-variable "role_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "IAM Role Tags"
+  description = "Default Tags"
 }

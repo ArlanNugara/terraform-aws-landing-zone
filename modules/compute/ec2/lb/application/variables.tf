@@ -57,7 +57,7 @@ variable "lb_app_xff_header_mode" {
   default     = "preserve"
 }
 
-variable "lb_app_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Load Balancer Tags"
+  description = "Default Tags"
 }

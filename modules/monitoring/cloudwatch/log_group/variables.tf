@@ -17,7 +17,7 @@ variable "log_group_log_retension_days" {
   default     = 90
 }
 
-variable "log_group_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "CloudWatch Log Group Tags"
+  description = "Default Tags"
 }

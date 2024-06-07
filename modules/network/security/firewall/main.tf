@@ -14,7 +14,12 @@ resource "aws_networkfirewall_rule_group" "rule_group" {
     }
   }
 
-  tags = var.fw_tags
+  tags = merge(
+    {
+      Name = "${var.fw_name}-rg"
+    },
+    var.default_tags
+  )
 }
 
 resource "aws_networkfirewall_firewall_policy" "firewall_policy" {
@@ -26,7 +31,12 @@ resource "aws_networkfirewall_firewall_policy" "firewall_policy" {
       resource_arn = aws_networkfirewall_rule_group.rule_group.arn
     }
   }
-  tags = var.fw_tags
+  tags = merge(
+    {
+      Name = "${var.fw_name}-policy"
+    },
+    var.default_tags
+  )
 }
 
 
@@ -37,7 +47,12 @@ resource "aws_networkfirewall_firewall" "firewall" {
   firewall_policy_change_protection = var.fw_policy_change_protection
   vpc_id                            = var.vpc_id
   subnet_change_protection          = var.fw_snet_change_protection
-  tags                              = var.fw_tags
+  tags = merge(
+    {
+      Name = var.fw_name
+    },
+    var.default_tags
+  )
   subnet_mapping {
     subnet_id = var.snet_id
   }

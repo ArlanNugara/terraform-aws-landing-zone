@@ -5,9 +5,9 @@ variable "aggregator_name" {
   description = "Config Aggregator Name"
 }
 
-variable "aggregator_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Config Aggregator Tags"
+  description = "Default Tags"
 }
 
 variable "aggregator_account_ids" {

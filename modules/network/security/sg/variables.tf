@@ -15,7 +15,7 @@ variable "vpc_id" {
   description = "VPC ID"
 }
 
-variable "sg_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Security Group Tags"
+  description = "Default Tags"
 }

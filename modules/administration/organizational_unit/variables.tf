@@ -10,7 +10,7 @@ variable "ou_parent_id" {
   description = "Organizational Unit Parent ID"
 }
 
-variable "ou_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Organizational Unit Tags"
+  description = "Default Tags"
 }

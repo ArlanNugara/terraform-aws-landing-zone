@@ -10,5 +10,10 @@ resource "aws_instance" "instance" {
   key_name                    = var.key_pair_name
   subnet_id                   = var.snet_id
   vpc_security_group_ids      = var.sg_ids
-  tags                        = var.instance_tags
+  tags = merge(
+    {
+      Name = var.instance_name
+    },
+    var.default_tags
+  )
 }

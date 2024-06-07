@@ -16,7 +16,7 @@ variable "instance_profile_path" {
   default     = "/"
 }
 
-variable "instance_profile_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Instance Profile Tags"
+  description = "Default Tags"
 }

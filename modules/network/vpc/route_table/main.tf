@@ -2,5 +2,10 @@
 
 resource "aws_route_table" "rt" {
   vpc_id = var.vpc_id
-  tags   = var.rt_tags
+  tags = merge(
+    {
+      Name = var.rt_name
+    },
+    var.default_tags
+  )
 }

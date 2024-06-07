@@ -5,5 +5,10 @@ resource "aws_iam_policy" "policy" {
   path        = var.policy_path
   description = var.policy_description
   policy      = var.policy
-  tags        = var.policy_tags
+  tags = merge(
+    {
+      Name = var.policy_name
+    },
+    var.default_tags
+  )
 }

@@ -6,5 +6,10 @@ resource "aws_vpc" "vpc" {
   enable_dns_support                   = var.vpc_dns_support
   enable_dns_hostnames                 = var.vpc_dns_hostname
   enable_network_address_usage_metrics = var.vpc_usage_metrics
-  tags                                 = var.vpc_tags
+  tags = merge(
+    {
+      Name = var.vpc_name
+    },
+    var.default_tags
+  )
 }

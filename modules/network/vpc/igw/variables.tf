@@ -1,11 +1,16 @@
 // Internet Gateway Variables
 
+variable "igw_name" {
+  type        = string
+  description = "Internet Gateway Name"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
 }
 
-variable "igw_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Internet Gateway Tags"
+  description = "Default Tags"
 }

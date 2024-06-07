@@ -15,7 +15,7 @@ variable "custgw_ip" {
   description = "The IPv4 address for the Customer Gateway device's outside interface"
 }
 
-variable "custgw_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Customer Gateway Tags"
+  description = "Default Tags"
 }

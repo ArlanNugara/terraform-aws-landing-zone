@@ -5,5 +5,10 @@ resource "aws_subnet" "snet" {
   cidr_block              = var.snet_address_space
   map_public_ip_on_launch = var.snet_pip
   availability_zone       = var.snet_az
-  tags                    = var.snet_tags
+  tags = merge(
+    {
+      Name = var.snet_name
+    },
+    var.default_tags
+  )
 }

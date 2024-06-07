@@ -58,9 +58,9 @@ variable "vpc_id" {
   description = "VPC ID"
 }
 
-variable "lb_tg_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Load Balancer Target Group Tags"
+  description = "Default Tags"
 }
 
 variable "lb_tg_hc_path" {

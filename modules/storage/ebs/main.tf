@@ -6,5 +6,10 @@ resource "aws_ebs_volume" "ebs" {
   encrypted         = var.ebs_encryption
   type              = var.ebs_type
   iops              = var.ebs_iops
-  tags              = var.ebs_tags
+  tags = merge(
+    {
+      Name = var.ebs_name
+    },
+    var.default_tags
+  )
 }

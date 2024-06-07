@@ -25,7 +25,7 @@ variable "target_id" {
   description = "Organization Policy Attachment Target ID"
 }
 
-variable "policy_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Organization Policy Tags"
+  description = "Default Tags"
 }

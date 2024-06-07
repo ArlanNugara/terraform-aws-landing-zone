@@ -10,9 +10,9 @@ variable "lb_eip_id" {
   description = "Load Balancer Elastic IP ID"
 }
 
-variable "lb_external_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Load Balancer Tags"
+  description = "Default Tags"
 }
 
 variable "lb_snet_id" {

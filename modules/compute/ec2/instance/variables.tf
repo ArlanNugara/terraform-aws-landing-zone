@@ -1,5 +1,10 @@
 // EC2 Instance Variables
 
+variable "instance_name" {
+  type        = string
+  description = "Instance Name"
+}
+
 variable "instance_ami" {
   type        = string
   description = "Instance AMI"
@@ -50,7 +55,7 @@ variable "sg_ids" {
   description = "Security Group IDs"
 }
 
-variable "instance_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Instance Tags"
+  description = "Default Tags"
 }

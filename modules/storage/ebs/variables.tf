@@ -1,5 +1,10 @@
 // Elastic Block Storage Variables
 
+variable "ebs_name" {
+  type       = string
+  description = "EBS Name"
+}
+
 variable "ebs_az" {
   type        = string
   description = "EBS Availability Zone"
@@ -30,7 +35,7 @@ variable "ebs_iops" {
   default     = null
 }
 
-variable "ebs_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "EBS Tags"
+  description = "Default Tags"
 }

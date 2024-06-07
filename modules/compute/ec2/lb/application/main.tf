@@ -12,5 +12,10 @@ resource "aws_lb" "lb_app" {
   idle_timeout                                = var.lb_app_idle_timeout
   preserve_host_header                        = var.lb_app_host_header_preservation
   xff_header_processing_mode                  = var.lb_app_xff_header_mode
-  tags                                        = var.lb_app_tags
+  tags = merge(
+    {
+      Name = var.lb_app_name
+    },
+    var.default_tags
+  )
 }

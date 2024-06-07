@@ -1,5 +1,10 @@
 // VPC Endpoint Gateway Type Variables
 
+variable "endpoint_name" {
+  type        = string
+  description = "VPC Endpoint Name"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
@@ -15,7 +20,7 @@ variable "rt_id" {
   description = "Route Table ID"
 }
 
-variable "vpc_endpoint_gateway_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "VPC Endpoint Gateway Type Tags"
+  description = "Default Tags"
 }

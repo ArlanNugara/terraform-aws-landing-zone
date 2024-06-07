@@ -5,7 +5,12 @@ resource "aws_organizations_policy" "policy" {
   description = var.policy_description
   content     = var.policy_content
   type        = var.policy_type
-  tags        = var.policy_tags
+  tags = merge(
+    {
+      Name = var.policy_name
+    },
+    var.default_tags
+  )
 }
 
 resource "aws_organizations_policy_attachment" "attachment" {

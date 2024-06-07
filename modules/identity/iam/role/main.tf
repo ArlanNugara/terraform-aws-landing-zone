@@ -5,5 +5,10 @@ resource "aws_iam_role" "role" {
   description           = var.role_description
   force_detach_policies = true
   assume_role_policy    = var.role_policy
-  tags                  = var.role_tags
+  tags = merge(
+    {
+      Name = var.role_name
+    },
+    var.default_tags
+  )
 }

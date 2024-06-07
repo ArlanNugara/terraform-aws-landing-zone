@@ -5,14 +5,19 @@ variable "bkp_vault_name" {
   description = "Backup Vault Name"
 }
 
-variable "bkp_vault_tags" {
-  type        = map(string)
-  description = "Backup Vault Tags"
+variable "listener_name" {
+  type        = string
+  description = "LB Listner Name"
 }
 
 variable "bkp_report_bucket" {
   type        = string
   description = "Bucket Name for Reports"
+}
+
+variable "default_tags" {
+  type        = string
+  description = "Default Tags"
 }
 
 locals {

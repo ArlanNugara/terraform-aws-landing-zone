@@ -1,5 +1,10 @@
 // Simple Storage Service Variables
 
+variable "bucket_name" {
+  type        = string
+  description = "S3 Bucket name"
+}
+
 variable "bucket_prefix" {
   type        = string
   description = "S3 Bucket Prefix"
@@ -11,7 +16,7 @@ variable "bucket_force_destroy" {
   default     = false
 }
 
-variable "bucket_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "S3 Bucket Tags"
+  description = "Default Tags"
 }

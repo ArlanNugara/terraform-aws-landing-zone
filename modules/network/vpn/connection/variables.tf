@@ -1,5 +1,10 @@
 // VPN Connection Variables
 
+variable "vpn_conn_name" {
+  type        = string
+  description = "VPN Connection Name"
+}
+
 variable "vpngw_id" {
   type        = string
   description = "VPN Gateway ID"
@@ -26,7 +31,7 @@ variable "vpn_conn_static_routes" {
   default     = false
 }
 
-variable "vpn_conn_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "VPN Connection Tags"
+  description = "Default Tags"
 }

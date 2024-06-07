@@ -22,7 +22,7 @@ variable "secret_value" {
   description = "Secret Manager Secret Value"
 }
 
-variable "secret_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Secret Manager Secret Tags"
+  description = "Default Tags"
 }

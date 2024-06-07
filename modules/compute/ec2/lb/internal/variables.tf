@@ -5,9 +5,9 @@ variable "lb_name" {
   description = "Load Balancer Name"
 }
 
-variable "lb_internal_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "Load Balancer Tags"
+  description = "Default Tags"
 }
 
 variable "lb_snet_id" {

@@ -1,5 +1,10 @@
 // VPC DHCP Option Variables
 
+variable "dhcp_option_name" {
+  type        = string
+  description = "DHCP Option Name"
+}
+
 variable "vpc_dhcp_dns" {
   type        = list(string)
   description = "VPC DHCP Domain Name Server"
@@ -12,7 +17,7 @@ variable "vpc_dhcp_ntp" {
   default     = []
 }
 
-variable "vpc_dhcp_tags" {
+variable "default_tags" {
   type        = map(string)
-  description = "VPC DHCP Option Tags"
+  description = "Default Tags"
 }
