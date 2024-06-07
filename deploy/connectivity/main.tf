@@ -1,28 +1,33 @@
 module "vpc" {
-  source      = "../../modules/network/vpc"
-  for_each    = local.vnet
-  vpc_address = each.value.address
-  vpc_tags    = each.value.tags
+  source       = "../../modules/network/vpc"
+  for_each     = local.vpc
+  vpc_name     = each.value.name
+  vpc_address  = each.value.address
+  default_tags = var.default_tags
 }
 
 module "peering" {
   source        = "../../modules/network/vpc/peering"
   for_each      = local.peering
+  peering_name  = each.key
   source_vpc_id = each.value.source_vpc_id
   remote_vpc_id = each.value.remote_vpc_id
+  default_tags  = var.default_tags
 }
 
 module "igw" {
-  source   = "../../modules/network/vpc/igw"
-  for_each = local.igw
-  vpc_id   = each.value.vpc
-  igw_tags = each.value.tags
+  source       = "../../modules/network/vpc/igw"
+  for_each     = local.igw
+  igw_name     = each.value.name
+  vpc_id       = each.value.vpc
+  default_tags = var.default_tags
 }
 
 module "dhcp_option" {
-  source        = "../../modules/network/vpc/dhcp_option"
-  for_each      = local.dhcp_option
-  vpc_dhcp_tags = each.value.tags
+  source           = "../../modules/network/vpc/dhcp_option"
+  for_each         = local.dhcp_option
+  dhcp_option_name = each.value.name
+  default_tags     = var.default_tags
 }
 
 module "dhcp_association" {
@@ -35,17 +40,19 @@ module "dhcp_association" {
 module "snet" {
   source             = "../../modules/network/vpc/subnet"
   for_each           = local.snet
+  snet_name          = each.value.name
   snet_address_space = each.value.address
   snet_az            = each.value.az
   vpc_id             = each.value.vpc
-  snet_tags          = each.value.tags
+  default_tags       = var.default_tags
 }
 
 module "route_table" {
-  source   = "../../modules/network/vpc/route_table"
-  for_each = local.main_route_table
-  vpc_id   = each.value.vpc
-  rt_tags  = each.value.tags
+  source       = "../../modules/network/vpc/route_table"
+  for_each     = local.main_route_table
+  rt_name      = each.value.name
+  vpc_id       = each.value.vpc
+  default_tags = var.default_tags
 }
 
 module "rt_snet_association" {
@@ -66,22 +73,10 @@ module "rt_route" {
 module "nacl" {
   source          = "../../modules/network/security/nacl"
   for_each        = local.nacl
+  nacl_name       = each.value.name
   vpc_id          = each.value.vpc
   nacl_subnet_ids = each.value.snet
-  nacl_tags       = each.value.tags
-}
-
-module "nacl_rule" {
-  source              = "../../modules/network/security/nacl/rules"
-  for_each            = local.nacl_rules
-  nacl_rule_action    = each.value.action
-  nacl_rule_protocol  = each.value.protocol
-  nacl_rule_egress    = each.value.egress
-  nacl_id             = each.value.nacl
-  nacl_rule_number    = each.value.rule
-  nacl_rule_cidr      = each.value.cidr
-  nacl_rule_from_port = each.value.from_port
-  nacl_rule_to_port   = each.value.to_port
+  default_tags    = var.default_tags
 }
 
 module "sg" {
@@ -90,15 +85,16 @@ module "sg" {
   sg_name        = each.value.name
   sg_description = each.value.description
   vpc_id         = each.value.vpc
-  sg_tags        = each.value.tags
+  default_tags   = each.value.tags
 }
 
 module "vpngw" {
-  source     = "../../modules/network/vpn"
-  for_each   = local.vpngw
-  vpc_id     = each.value.vpc
-  vpngw_az   = each.value.az
-  vpngw_tags = each.value.tags
+  source       = "../../modules/network/vpn"
+  for_each     = local.vpngw
+  vpngw_name   = each.value.name
+  vpc_id       = each.value.vpc
+  vpngw_az     = each.value.az
+  default_tags = var.default_tags
 }
 
 module "custgw" {
@@ -107,25 +103,26 @@ module "custgw" {
   custgw_device_name = each.value.name
   custgw_bgp_asn     = each.value.asn
   custgw_ip          = each.value.ip
-  custgw_tags        = each.value.tags
+  default_tags       = var.default_tags
 }
 
 module "conn" {
   source        = "../../modules/network/vpn/connection"
   for_each      = local.vpn_conn
+  vpn_conn_name = each.value.name
   vpngw_id      = each.value.vpngw
   custgw_id     = each.value.custgw
   custgw_cidr   = each.value.remote_cidr
   cloud_cidr    = each.value.cloud_cidr
-  vpn_conn_tags = each.value.tags
+  default_tags  = var.default_tags
 }
 
 module "firewall" {
-  source   = "../../modules/network/security/firewall"
-  for_each = local.firewall
-  fw_name  = each.value.name
-  fw_tags  = each.value.tags
-  vpc_id   = each.vaule.vpc
-  snet_id  = each.value.snet
-  targets  = each.value.targets
+  source       = "../../modules/network/security/firewall"
+  for_each     = local.firewall
+  fw_name      = each.value.name
+  default_tags = var.default_tags
+  vpc_id       = each.vaule.vpc
+  snet_id      = each.value.snet
+  targets      = each.value.targets
 }

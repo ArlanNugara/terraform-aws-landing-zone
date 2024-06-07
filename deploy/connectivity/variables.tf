@@ -1,15 +1,25 @@
 // Variables
 
+variable "default_tags" {
+  type        = map(string)
+  description = "Default Tags"
+}
+
 // VPC
+
+variable "hub_vpc_name" {
+  type        = string
+  description = "Hub VPC Name"
+}
 
 variable "hub_vpc_address" {
   type        = string
   description = "Hub VPC Address Space"
 }
 
-variable "hub_vpc_tags" {
-  type        = map(string)
-  description = "Hub VPC Tags"
+variable "sbx_vpc_name" {
+  type        = string
+  description = "SBX VPC Name"
 }
 
 variable "sbx_vpc_address" {
@@ -17,9 +27,9 @@ variable "sbx_vpc_address" {
   description = "SBX VPC Address Space"
 }
 
-variable "sbx_vpc_tags" {
-  type        = map(string)
-  description = "SBX VPC Tags"
+variable "dev_vpc_name" {
+  type        = string
+  description = "Dev VPC Name"
 }
 
 variable "dev_vpc_address" {
@@ -27,9 +37,9 @@ variable "dev_vpc_address" {
   description = "Dev VPC Address Space"
 }
 
-variable "dev_vpc_tags" {
-  type        = map(string)
-  description = "Dev VPC Tags"
+variable "qa_vpc_name" {
+  type        = string
+  description = "QA VPC Name"
 }
 
 variable "qa_vpc_address" {
@@ -37,9 +47,9 @@ variable "qa_vpc_address" {
   description = "QA VPC Address Space"
 }
 
-variable "qa_vpc_tags" {
-  type        = map(string)
-  description = "QA VPC Tags"
+variable "prod_vpc_name" {
+  type        = string
+  description = "Prod VPC Name"
 }
 
 variable "prod_vpc_address" {
@@ -47,63 +57,65 @@ variable "prod_vpc_address" {
   description = "Prod VPC Address Space"
 }
 
-variable "prod_vpc_tags" {
-  type        = map(string)
-  description = "Prod VPC Tags"
-}
-
 // Internet Gateway
 
-variable "hub_igw_tags" {
-  type        = map(string)
-  description = "HUB Internet Gateway Tags"
+variable "hub_igw_name" {
+  type        = string
+  description = "Hub IGW Name"
 }
 
-variable "sbx_igw_tags" {
-  type        = map(string)
-  description = "SBX Internet Gateway Tags"
+variable "sbx_igw_name" {
+  type        = string
+  description = "SBX IGW Name"
 }
 
-variable "dev_igw_tags" {
-  type        = map(string)
-  description = "Development Internet Gateway Tags"
+variable "dev_igw_name" {
+  type        = string
+  description = "Dev IGW Name"
 }
 
-variable "qa_igw_tags" {
-  type        = map(string)
-  description = "QA Internet Gateway Tags"
+variable "qa_igw_name" {
+  type        = string
+  description = "QA IGW Name"
 }
 
-variable "prod_igw_tags" {
-  type        = map(string)
-  description = "Prod Internet Gateway Tags"
+variable "prod_igw_name" {
+  type        = string
+  description = "Prod IGW Name"
 }
 
 // DHCP Options
 
-variable "hub_dhcp_option_tags" {
-  type        = map(string)
-  description = "HUB DHCP Option Tags"
+variable "hub_dhcp_option_name" {
+  type        = string
+  description = "HUB DHCP Option Name"
 }
 
-variable "sbx_dhcp_option_tags" {
-  type        = map(string)
-  description = "SBX DHCP Option Tags"
+variable "sbx_dhcp_option_name" {
+  type        = string
+  description = "SBX DHCP Option Name"
 }
 
-variable "dev_dhcp_option_tags" {
-  type        = map(string)
-  description = "Development DHCP Option Tags"
+variable "dev_dhcp_option_name" {
+  type        = string
+  description = "Development DHCP Option Name"
 }
 
-variable "qa_dhcp_option_tags" {
-  type        = map(string)
-  description = "QA DHCP Option Tags"
+variable "qa_dhcp_option_name" {
+  type        = string
+  description = "QA DHCP Option Name"
 }
 
-variable "prod_dhcp_option_tags" {
-  type        = map(string)
-  description = "Prod DHCP Option Tags"
+variable "prod_dhcp_option_name" {
+  type        = string
+  description = "Prod DHCP Option Name"
+}
+
+// Subnet
+
+variable "hub_general_snet_name" {
+  type        = string
+  description = "Hub General SNET Name"
 }
 
 variable "hub_general_snet_address" {
@@ -111,9 +123,9 @@ variable "hub_general_snet_address" {
   description = "HUB General SNET Address Space"
 }
 
-variable "hub_general_snet_tags" {
-  type        = map(string)
-  description = "HUB General SNET Tags"
+variable "hub_firewall_snet_name" {
+  type        = string
+  description = "Hub Firewall SNET Name"
 }
 
 variable "hub_firewall_snet_address" {
@@ -121,9 +133,9 @@ variable "hub_firewall_snet_address" {
   description = "HUB Firewall SNET Address Space"
 }
 
-variable "hub_firewall_snet_tags" {
-  type        = map(string)
-  description = "HUB Firewall SNET Tags"
+variable "hub_vpngw_snet_name" {
+  type        = string
+  description = "Hub VPNGW SNET Name"
 }
 
 variable "hub_vpngw_snet_address" {
@@ -131,30 +143,31 @@ variable "hub_vpngw_snet_address" {
   description = "HUB VPN Gateway SNET Address Space"
 }
 
-variable "hub_vpngw_snet_tags" {
-  type        = map(string)
-  description = "HUB VPN Gateway SNET Tags"
+// Route Table
+
+variable "hub_general_rt_name" {
+  type        = string
+  description = "Hub General Route Table Name"
 }
 
-variable "hub_general_rt_tags" {
-  type        = map(string)
-  description = "Hub General Route Table Tags"
+variable "hub_firewall_rt_name" {
+  type        = string
+  description = "Hub General Route Table Name"
 }
 
-variable "hub_firewall_rt_tags" {
-  type        = map(string)
-  description = "Hub General Route Table Tags"
+variable "hub_vpngw_rt_name" {
+  type        = string
+  description = "Hub General Route Table Name"
 }
 
-variable "hub_vpngw_rt_tags" {
-  type        = map(string)
-  description = "Hub General Route Table Tags"
+// Network Access Control List
+
+variable "hub_nacl_name" {
+  type        = string
+  description = "Hub NACL Name"
 }
 
-variable "hub_nacl_tags" {
-  type        = map(string)
-  description = "Hub NACL Tags"
-}
+// Security Group
 
 variable "hub_sg_name" {
   type        = string
@@ -166,21 +179,21 @@ variable "hub_sg_description" {
   description = "HUB Security Group Description"
 }
 
-variable "hub_sg_tags" {
-  type        = map(string)
-  description = "HUB Security Group Tags"
-}
-
 // VPN Gateway
 
-variable "hub_vpngw_tags" {
-  type        = map(string)
-  description = "HUB VPN Gateway Tags"
+variable "hub_vpngw_name" {
+  type        = string
+  description = "HUB VPN Gateway Name"
 }
 
 variable "hub_custgw_name" {
   type        = string
   description = "Hub Customer Gateway Name"
+}
+
+variable "hub_vpn_conn_name" {
+  type        = string
+  description = "Hub VPN Connection Name"
 }
 
 variable "hub_custgw_asn" {
@@ -191,16 +204,6 @@ variable "hub_custgw_asn" {
 variable "hub_custgw_ip" {
   type        = string
   description = "External Interface IP of the target"
-}
-
-variable "hub_custgw_tags" {
-  type        = map(string)
-  description = "Hub Customer Gateway Tags"
-}
-
-variable "hub_vpn_conn_tags" {
-  type        = map(string)
-  description = "Hub VPNGW Connection Tags"
 }
 
 variable "hub_vpn_conn_remote_cidr" {
@@ -218,9 +221,4 @@ variable "fw_name" {
 variable "fw_targets" {
   type        = list(string)
   description = "Firewall Targets"
-}
-
-variable "fw_tags" {
-  type        = map(string)
-  description = "Firewall Tags"
 }
