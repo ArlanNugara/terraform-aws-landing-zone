@@ -6,7 +6,7 @@ default_tags = {
   "CreatedBy"        = "Terraform"
 }
 
-sh_master_account_id                       = "200735207141"
+sh_master_account_id                       = "ACCOUNT ID HERE"
 security_hub_nist_arn                      = "arn:aws:securityhub:ca-central-1::standards/nist-800-53/v/5.0.0"
 security_hub_pcidss_arn                    = "arn:aws:securityhub:ca-central-1::standards/pci-dss/v/3.2.1"
 security_hub_awsfb_arn                     = "arn:aws:securityhub:ca-central-1::standards/cis-aws-foundations-benchmark/v/1.4.0"
