@@ -1,6 +1,10 @@
 # Introduction
 
-Coming Soon..
+This guide provides detailed instructions for deploying infrastructure on AWS using Terraform and Azure DevOps pipelines. The guide assumes familiarity with AWS services, Terraform, and Azure DevOps.
+
+The project uses an S3 bucket to store Terraform state files and requires an IAM user with specific permissions for deployment. The deployment process is modular, allowing for granular control and easy customization. The infrastructure is divided into several components, including core, management, identity, connectivity and platform, which can be deployed sequentially or through an automated pipeline.
+
+This guide will walk you through setting up the necessary backend and IAM configurations and deploying the infrastructure using both manual and automated methods.
 
 # Table of Content
 
@@ -10,7 +14,7 @@ Coming Soon..
 - [Understanding the Code](#understanding-the-code)
 - [Deployment](#deployment)
   - [Pipeline](#pipeline)
-  - [Resources](#resources)
+- [Resources](#resources)
 
 # Prerequisites
 
@@ -108,11 +112,11 @@ The code is simplified with granular modules for ease of operations. You may cha
 | modules| Contains Terraform Modules|
 |.pipelines| Contains Azure DevOps Pipeline YAML file|
 
-**Note : -** You must change values of tfvars file as per your organization's policy and naming conventions.
+**Note : -** You must change values of tfvars and config files as per your organization's policy and naming conventions.
 
 # Deployment
 
-The code can be deployed using [Terraform](https://www.terraform.io/) commands. The sequence of deployment should be **core** --> **management** --> **identity** --> **connectivity**
+The code can be deployed using [Terraform](https://www.terraform.io/) commands. The sequence of deployment should be **core** --> **management** --> **identity** --> **connectivity** --> **platform**
 
 ```
 cd  deploy/core
@@ -138,7 +142,7 @@ Azure DevOps Pipeline requires Service Connection to run tasks. The Service Prin
 |ARM-TENANT-ID|Azure Tenant ID|
 
 ### Key Vault
-An Azure Key Vault is required to store Secrets which are used by the pipeline to authenticate against AWS to perform it's desired operation. Please note the Service Principle mentioned [above](#service-connection) must have **GET** and **LIST** for the Key Vault Secrets. Please [create the secrets](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) in Azure Key Vault.
+An Azure Key Vault is required to store Secrets which are used by the pipeline to authenticate against AWS to perform its desired operation. Please note the Service Principle mentioned [above](#service-connection) must have **GET** and **LIST** for the Key Vault Secrets. Please [create the secrets](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) in Azure Key Vault.
 
 Secrets to be created in Azure Key Vault
 
@@ -184,7 +188,7 @@ Please follow the instruction to run deploy pipelines
 - Select **Pre Fight Test** as **Yes** and click on **Run** button
 - Follow the Pipeline Status
 
-**Note :** - It is recommended to keep **Pre Fight Test** as **Yes** for first time. Once satisfied with the Terraform Plan output you neeed to rerun the Pipeline keeping **Pre Fight Test** as **No**.
+**Note :** - It is recommended to keep **Pre Fight Test** as **Yes** for first time. Once satisfied with the Terraform Plan output you need to rerun the Pipeline keeping **Pre Fight Test** as **No**.
 
 ![image](./images/pipeline.png)
 
@@ -199,7 +203,7 @@ The Resources deployed are as follows: -
   - Security Hub
     - Admin Account
     - Standard Subscriptions
-    - Finding Aggregrator
+    - Finding Aggregator
   - Config
     - S3, Roles, Policy for Config
     - Recorder
@@ -221,3 +225,10 @@ The Resources deployed are as follows: -
   - Network Access Control List and Rules
   - Security Groups
   - VPN Gateway, Customer Gateway and Connection
+- Platform
+  - Instances for App, Web and Database
+  - S3 Buckets
+
+The Organizational Structure deployed in **core** stage is as follows: -
+
+![image](./images/ALV_AWS_Account_Information_06-21-2024_v1.0.png)

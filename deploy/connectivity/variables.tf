@@ -143,6 +143,36 @@ variable "hub_vpngw_snet_address" {
   description = "HUB VPN Gateway SNET Address Space"
 }
 
+variable "sbx_app_snet_name" {
+  type        = string
+  description = "SBX App SNET Name"
+}
+
+variable "sbx_app_snet_address" {
+  type        = string
+  description = "SBX App SNET Address Space"
+}
+
+variable "sbx_db_snet_name" {
+  type        = string
+  description = "SBX DB SNET Name"
+}
+
+variable "sbx_db_snet_address" {
+  type        = string
+  description = "SBX DB SNET Address Space"
+}
+
+variable "sbx_web_snet_name" {
+  type        = string
+  description = "SBX Web SNET Name"
+}
+
+variable "sbx_web_snet_address" {
+  type        = string
+  description = "SBX Web SNET Address Space"
+}
+
 // Route Table
 
 variable "hub_general_rt_name" {
@@ -177,6 +207,16 @@ variable "hub_sg_name" {
 variable "hub_sg_description" {
   type        = string
   description = "HUB Security Group Description"
+}
+
+variable "sbx_sg_name" {
+  type        = string
+  description = "SBX Security Group Name"
+}
+
+variable "sbx_sg_description" {
+  type        = string
+  description = "SBX Security Group Description"
 }
 
 // VPN Gateway

@@ -20,6 +20,8 @@ parameters:
       dependsOn: Deploymanagement
     - stage: connectivity
       dependsOn: Deployidentity
+    - stage: platform
+      dependsOn: Deployconnectivity
 
 variables:
   - name: AZURE_SERVICE_CONNECTION

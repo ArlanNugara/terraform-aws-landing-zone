@@ -126,6 +126,24 @@ locals {
       address = var.hub_vpngw_snet_address
       az      = "ca-central-1a"
     }
+    "sbx_app" = {
+      name    = var.sbx_app_snet_name
+      vpc     = module.vpc["sbx"].output_vpc_id
+      address = var.sbx_app_snet_address
+      az      = "ca-central-1a"
+    }
+    "sbx_db" = {
+      name    = var.sbx_db_snet_name
+      vpc     = module.vpc["sbx"].output_vpc_id
+      address = var.sbx_db_snet_address
+      az      = "ca-central-1a"
+    }
+    "sbx_app" = {
+      name    = var.sbx_web_snet_name
+      vpc     = module.vpc["sbx"].output_vpc_id
+      address = var.sbx_web_snet_address
+      az      = "ca-central-1a"
+    }
   }
   # Route Table
   main_route_table = {
@@ -176,6 +194,11 @@ locals {
       name        = var.hub_sg_name
       description = var.hub_sg_description
       vpc         = module.vpc["hub"].output_vpc_id
+    }
+    "sbx" = {
+      name        = var.sbx_sg_name
+      description = var.sbx_sg_description
+      vpc         = module.vpc["sbx"].output_vpc_id
     }
   }
   # VPN Gateway

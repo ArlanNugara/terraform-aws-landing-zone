@@ -41,6 +41,12 @@ hub_firewall_snet_address = "10.10.2.0/24"
 hub_firewall_snet_name    = "alv_hub_snet_firewall"
 hub_vpngw_snet_address    = "10.10.3.0/24"
 hub_vpngw_snet_name       = "alv_hub_snet_vpngw"
+sbx_app_snet_name         = "alv_sbx_snet_app"
+sbx_app_snet_address      = "10.20.1.0/24"
+sbx_db_snet_name          = "alv_sbx_snet_db"
+sbx_db_snet_address       = "10.20.2.0/24"
+sbx_web_snet_name         = "alv_sbx_snet_web"
+sbx_web_snet_address      = "10.20.3.0/24"
 
 # Route Table
 hub_general_rt_name  = "alv_hub_general_rt"
@@ -53,6 +59,8 @@ hub_nacl_name = "alv_hub_nacl"
 # Security Group
 hub_sg_name        = "alv_hub_sg"
 hub_sg_description = "ALV Hub Security Group"
+sbx_sg_name        = "alv_sbx_sg"
+sbx_sg_description = "ALV SBX Security Group"
 
 # VPN Gateway
 hub_vpngw_name           = "alv_hub_vpngw"

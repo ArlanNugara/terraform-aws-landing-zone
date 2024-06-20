@@ -26,7 +26,7 @@ variable "instance_eip" {
 variable "instance_az" {
   type        = string
   description = "Instance Availability Zone"
-  default     = "us-east-1a"
+  default     = "ca-central-1a"
 }
 
 variable "instance_ebs" {
