@@ -232,4 +232,4 @@ The Resources deployed are as follows: -
 
 The Organizational Structure deployed in **core** stage is as follows: -
 
-![image](./images/ALV_AWS_Account_Information_06-21-2024_v1.0.png)
+![image](./images/ALV_AWS_Account_Information_06-22-2024_v1.1.png)
