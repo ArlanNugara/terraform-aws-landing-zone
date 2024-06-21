@@ -52,20 +52,21 @@ locals {
       snet     = data.aws_subnet.sbx_web_subnet.id
       sg       = [data.aws_security_group.sbx_sg.id]
     }
-    "sbx_db_1" = {
-      name     = var.sbx_db_1_name
-      ami      = var.sbx_db_1_ami
-      type     = var.sbx_db_1_type
-      iam      = data.aws_iam_instance_profile.profile.name
-      key_pair = var.sbx_db_1_kp
-      snet     = data.aws_subnet.sbx_db_subnet.id
-      sg       = [data.aws_security_group.sbx_sg.id]
-    }
   }
   storage = {
     "sbx" = {
       name   = var.sbx_s3_name
       prefix = var.sbx_s3_prefix
+    }
+  }
+  database = {
+    "sbx" = {
+      name        = var.sbx_db_1_name
+      username    = var.sbx_db_1_username
+      az          = var.sbx_db_1_az
+      storage     = var.sbx_db_1_storage_size
+      max_storage = var.sbx_db_1_max_storage_size
+      snet        = [data.aws_subnet.sbx_db_subnet.id]
     }
   }
 }

@@ -16,10 +16,14 @@ sbx_web_1_name = "sbx_web_1"
 sbx_web_1_ami  = "ami-0ceef54df6e1f48a1"
 sbx_web_1_type = "t3.small"
 sbx_web_1_kp   = "sbx_kp"
-sbx_db_1_name  = "sbx_db_1"
-sbx_db_1_ami   = "ami-0ceef54df6e1f48a1"
-sbx_db_1_type  = "t3.large"
-sbx_db_1_kp    = "sbx_kp"
+
+# RDS
+
+sbx_db_1_name             = "sbx_rds"
+sbx_db_1_username         = "sbxrds"
+sbx_db_1_az               = "ca-central-1a"
+sbx_db_1_storage_size     = 20
+sbx_db_1_max_storage_size = 50
 
 # Storage
 

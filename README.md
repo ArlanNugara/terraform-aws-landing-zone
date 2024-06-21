@@ -226,7 +226,8 @@ The Resources deployed are as follows: -
   - Security Groups
   - VPN Gateway, Customer Gateway and Connection
 - Platform
-  - Instances for App, Web and Database
+  - Instances for App, Web
+  - RDS Instance for Database
   - S3 Buckets
 
 The Organizational Structure deployed in **core** stage is as follows: -

@@ -8,63 +8,70 @@ variable "default_tags" {
 // Instances
 
 variable "sbx_app_1_name" {
-  type = string
+  type        = string
   description = "SBX App Instance Name"
 }
 
 variable "sbx_app_1_ami" {
-  type = string
+  type        = string
   description = "SBX App Instance AMI"
 }
 
 variable "sbx_app_1_type" {
-  type = string
+  type        = string
   description = "SBX App Instance Type"
 }
 
 variable "sbx_app_1_kp" {
-  type = string
+  type        = string
   description = "SBX App Instance Key Pair Name"
 }
 
 variable "sbx_web_1_name" {
-  type = string
+  type        = string
   description = "SBX Web Instance Name"
 }
 
 variable "sbx_web_1_ami" {
-  type = string
+  type        = string
   description = "SBX Web Instance AMI"
 }
 
 variable "sbx_web_1_type" {
-  type = string
+  type        = string
   description = "SBX Web Instance Type"
 }
 
 variable "sbx_web_1_kp" {
-  type = string
+  type        = string
   description = "SBX Web Instance Key Pair Name"
 }
 
+// RDS
+
 variable "sbx_db_1_name" {
-  type = string
-  description = "SBX DB Instance Name"
+  type        = string
+  description = "SBX DB Name"
 }
 
-variable "sbx_db_1_ami" {
-  type = string
-  description = "SBX DB Instance AMI"
+variable "sbx_db_1_username" {
+  type        = string
+  description = "SBX DB Username"
 }
 
-variable "sbx_db_1_type" {
-  type = string
-  description = "SBX DB Instance Type"
+variable "sbx_db_1_az" {
+  type        = string
+  description = "SBX DB Availability Zone"
 }
 
-variable "sbx_db_1_kp" {
-  type = string
-  description = "SBX DB Instance Key Pair Name"
+variable "sbx_db_1_storage_size" {
+  type        = number
+  description = "SBX DB Storage Size"
+}
+
+variable "sbx_db_1_max_storage_size" {
+  type        = number
+  description = "SBX DB Max Storage Size"
 }
 
 // Storage
